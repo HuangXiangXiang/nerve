@@ -33,11 +33,11 @@ apply plugin: 'com.novoda.bintray-release'//添加
 //项目主页
 def siteUrl = 'https://github.com/HuangXiangXiang/nerve'
 publish{
-    repoName = 'MyMaven'//远程仓库名字,不指明，默认是上传到maven
+    repoName = 'RobotMaven'//远程仓库名字,不指明，默认是上传到maven
     userOrg = 'huangxiangxiang'//bintray.com的用户名
-    groupId = 'com.huangxiangxiang'//jcenter上的路径
+    groupId = 'com.yongyida.robot.nerve'//jcenter上的路径
     artifactId = 'nerve'//项目名称
-    publishVersion = '0.0.1'//版本号
+    publishVersion = '0.0.2'//版本号
     desc = '机器人各个枢纽通讯'//描述，不重要
     website = siteUrl//项目主页
 }
