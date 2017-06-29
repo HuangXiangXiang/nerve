@@ -1,7 +1,7 @@
 package com.yongyida.robot.nerve.send;
 
 
-import com.yongyida.robot.nerve.bean.Container;
+import com.yongyida.robot.nerve.cell.Container;
 
 /**
  * Created by Administrator on 2017/6/2.

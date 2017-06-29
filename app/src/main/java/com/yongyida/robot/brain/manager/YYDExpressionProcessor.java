@@ -1,18 +1,18 @@
 package com.yongyida.robot.brain.manager;
 
-import com.yongyida.robot.nerve.bean.Container;
-import com.yongyida.robot.nerve.bean.send.ExpressionSend;
-import com.yongyida.robot.nerve.processor.ExpressionProcessor;
-import com.yongyida.robot.nerve.receive.ReceiveService;
+import com.yongyida.robot.nerve.cell.Container;
+import com.yongyida.robot.nerve.cell.expression.ExpressionSendBrain;
+import com.yongyida.robot.nerve.cell.expression.ExpressionSendBrainProcessor;
+import com.yongyida.robot.nerve.service.BrainService;
 
 /**
  * Created by Huangxiangxiang on 2017/6/24.
  * 表情
  */
-public class YYDExpressionProcessor extends ExpressionProcessor {
+public class YYDExpressionProcessor extends ExpressionSendBrainProcessor {
 
 
-    public YYDExpressionProcessor(ReceiveService receiveService) {
+    public YYDExpressionProcessor(BrainService receiveService) {
         super(receiveService);
     }
 
@@ -20,7 +20,7 @@ public class YYDExpressionProcessor extends ExpressionProcessor {
      * 处理来自“表情”的信息
      * */
     @Override
-    public void handleEvent(Container container, ExpressionSend send) {
+    public void handleEvent(Container container, ExpressionSendBrain send) {
 
     }
 }

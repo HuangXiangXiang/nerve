@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.BrainService">
+        <service android:name=".service.YYDBrainService">
 
             <intent-filter>
                 <action android:name="com.yydrobot.brain"/>

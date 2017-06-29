@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.yongyida.robot.nerve.bean.send.BrainSend;
-import com.yongyida.robot.nerve.bean.Container;
+import com.yongyida.robot.nerve.cell.Container;
+import com.yongyida.robot.nerve.cell.ear.BrainSendEar;
 import com.yongyida.robot.nerve.send.OutputClient;
 import com.yongyida.robot.nerve.send.SendCenter;
 import com.yongyida.robot.nerve.send.SendResponseListener;
@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void send(View view){
 
-        BrainSend brainSend = new BrainSend() ;
-        Container container = Container.getSendContainer(this, brainSend) ;
+        BrainSendEar brainSendEar = new BrainSendEar() ;
+        Container container = Container.getBrainSendFunctionContainer(this, brainSendEar) ;
 
         SendResponseListener sendResponseListener = new SendResponseListener() {
             @Override

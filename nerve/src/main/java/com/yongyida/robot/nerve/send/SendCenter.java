@@ -1,10 +1,9 @@
 package com.yongyida.robot.nerve.send;
 
 import android.content.Context;
-import android.os.Bundle;
 
-import com.yongyida.robot.nerve.bean.Container;
-import com.yongyida.robot.nerve.bean.DataType;
+import com.yongyida.robot.nerve.cell.Container;
+import com.yongyida.robot.nerve.cell.FunctionType;
 import com.yongyida.robot.nerve.utils.AppUtils;
 
 import java.util.ArrayList;
@@ -80,13 +79,19 @@ public class SendCenter {
         return outputClientList ;
     }
 
+    public void earSendBrain(){
+
+
+    }
+
+
 
     /**
      * 发送给脑
      * */
     public void sendToBrain(Container container, SendResponseListener response ) {
 
-        send(DataType.TYPE_BRAIN ,container, response) ;
+        send(FunctionType.TYPE_BRAIN ,container, response) ;
     }
 
 
@@ -96,7 +101,7 @@ public class SendCenter {
      * */
     public void send(int to,Container container, SendResponseListener response ){
 
-        String action = DataType.getAction(to) ;
+        String action = FunctionType.getAction(to) ;
         ArrayList<OutputClient> outputClientList = initServiceAction(action) ;
 
         new SendClientsThread(outputClientList,container ,response).start();

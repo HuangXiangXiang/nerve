@@ -1,20 +1,17 @@
 package com.yongyida.robot.brain.manager;
 
-import android.content.Context;
-
-import com.yongyida.robot.brain.service.BrainService;
-import com.yongyida.robot.nerve.bean.Container;
-import com.yongyida.robot.nerve.bean.send.HandSend;
-import com.yongyida.robot.nerve.processor.HandProcessor;
-import com.yongyida.robot.nerve.receive.ReceiveService;
+import com.yongyida.robot.nerve.cell.Container;
+import com.yongyida.robot.nerve.cell.hand.HandSendBrain;
+import com.yongyida.robot.nerve.cell.hand.HandSendBrainProcessor;
+import com.yongyida.robot.nerve.service.BrainService;
 
 /**
  * Created by Huangxiangxiang on 2017/6/24.
  * 手
  */
-public class YYDHandProcessor extends HandProcessor{
+public class YYDHandProcessor extends HandSendBrainProcessor{
 
-    public YYDHandProcessor(ReceiveService receiveService) {
+    public YYDHandProcessor(BrainService receiveService) {
         super(receiveService);
     }
 
@@ -22,7 +19,7 @@ public class YYDHandProcessor extends HandProcessor{
      * 处理来自“手”的信息
      * */
     @Override
-    public void handleEvent(Container container, HandSend send) {
+    public void handleEvent(Container container, HandSendBrain send) {
 
     }
 
