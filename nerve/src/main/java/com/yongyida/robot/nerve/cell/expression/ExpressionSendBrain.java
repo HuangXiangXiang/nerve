@@ -1,5 +1,7 @@
 package com.yongyida.robot.nerve.cell.expression;
 
+import android.content.Context;
+
 import com.yongyida.robot.nerve.cell.FunctionSendBrain;
 
 /**
@@ -7,6 +9,7 @@ import com.yongyida.robot.nerve.cell.FunctionSendBrain;
  */
 public class ExpressionSendBrain extends FunctionSendBrain {
 
-
-
+    public ExpressionSendBrain(Context context) {
+        super(context);
+    }
 }

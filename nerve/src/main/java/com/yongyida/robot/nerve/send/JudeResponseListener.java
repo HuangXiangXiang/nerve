@@ -5,6 +5,6 @@ package com.yongyida.robot.nerve.send;
  */
 public interface JudeResponseListener {
 
-    void responseJudeResult(OutputClient outputClient, boolean result) ;
+    void responseJudeResult(Receiver receiver, boolean result) ;
 
 }

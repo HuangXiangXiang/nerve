@@ -2,7 +2,7 @@ package com.yongyida.robot.brain.manager;
 
 import com.yongyida.robot.nerve.cell.Container;
 import com.yongyida.robot.nerve.cell.expression.ExpressionSendBrain;
-import com.yongyida.robot.nerve.cell.expression.ExpressionSendBrainProcessor;
+import com.yongyida.robot.nerve.cell.expression.brain.ExpressionSendBrainProcessor;
 import com.yongyida.robot.nerve.service.BrainService;
 
 /**

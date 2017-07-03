@@ -3,13 +3,13 @@ package com.yongyida.robot.brain.manager;
 import android.util.Log;
 
 import com.yongyida.robot.nerve.cell.Container;
-import com.yongyida.robot.nerve.cell.FunctionType;
-import com.yongyida.robot.nerve.cell.ear.BrainSendEar;
+import com.yongyida.robot.nerve.cell.eye.BrainResponseEye;
 import com.yongyida.robot.nerve.cell.eye.EyeSendBrain;
-import com.yongyida.robot.nerve.cell.eye.EyeSendBrainProcessor;
+import com.yongyida.robot.nerve.cell.eye.brain.EyeSendBrainProcessor;
 import com.yongyida.robot.nerve.cell.mouth.BrainSendMouth;
-import com.yongyida.robot.nerve.send.OutputClient;
-import com.yongyida.robot.nerve.send.SendCenter;
+import com.yongyida.robot.nerve.cell.mouth.MouthResponseBrain;
+import com.yongyida.robot.nerve.send.Receiver;
+import com.yongyida.robot.nerve.send.SendManager;
 import com.yongyida.robot.nerve.send.SendResponseListener;
 import com.yongyida.robot.nerve.service.BrainService;
 
@@ -17,7 +17,7 @@ import com.yongyida.robot.nerve.service.BrainService;
  * Created by Huangxiangxiang on 2017/6/23.
  * 眼睛
  */
-public class YYDEyeProcessor extends EyeSendBrainProcessor{
+public class YYDEyeProcessor extends EyeSendBrainProcessor {
 
     public static final String TAG = YYDEyeProcessor.class.getName();
 
@@ -36,22 +36,32 @@ public class YYDEyeProcessor extends EyeSendBrainProcessor{
         Log.i("hxx", mReceiveService.getPackageName() + eyeSendBrain.test) ;
 
         //大脑发送信息给嘴巴
-        BrainSendMouth brainSendMouth = new BrainSendMouth() ;
+        BrainSendMouth brainSendMouth = new BrainSendMouth(mReceiveService) ;
         brainSendMouth.test = " brain send mouth " ;
-        final Container brainContainer = Container.getBrainSendFunctionContainer(mReceiveService, brainSendMouth) ;
 
         SendResponseListener sendResponseListener = new SendResponseListener() {
 
             @Override
-            public void responseSend(OutputClient outputClient, Container response) {
+            public void responseSend(Receiver outputClient, Container response) {
 
-                Log.i("hxx", mReceiveService.getPackageName() + " brain response ") ;
+                // 大脑发送信息给嘴巴的响应
+                MouthResponseBrain mouthResponseBrain = response.getData(MouthResponseBrain.class) ;
+
+                Log.i("hxx", mReceiveService.getPackageName() + mouthResponseBrain.test) ;
+
+
+
+                // 响应 eye send brain
+                BrainResponseEye brainResponseEye = new BrainResponseEye(mReceiveService) ;
+                Container response1 = Container.getBrainResponseFunctionContainer(mReceiveService,brainResponseEye) ;
+
+
                 mReceiveService.responseClient(send, response);
             }
         };
 
         Log.i("hxx", mReceiveService.getPackageName() + brainSendMouth.test) ;
-        SendCenter.getInstance(mReceiveService).send(FunctionType.TYPE_MOUTH ,brainContainer, sendResponseListener );
+        SendManager.getInstance(mReceiveService).brainSendFunction(brainSendMouth, sendResponseListener );
 
     }
 

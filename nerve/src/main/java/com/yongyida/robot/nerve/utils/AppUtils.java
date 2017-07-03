@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 
-import com.yongyida.robot.nerve.send.OutputClient;
+import com.yongyida.robot.nerve.send.Receiver;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -42,9 +42,9 @@ public class AppUtils {
      *
      * 通过Action 获取,service package
      * */
-    public static HashMap<String,OutputClient> getOutputClientByServiceAction(Context context , String action){
+    public static HashMap<String,Receiver> getOutputClientByServiceAction(Context context , String action){
 
-        HashMap<String,OutputClient> outputClients = new HashMap<>() ;
+        HashMap<String,Receiver> outputClients = new HashMap<>() ;
 
         PackageManager pm = context.getPackageManager();
         Intent robotService = new Intent(action) ;
@@ -57,8 +57,8 @@ public class AppUtils {
 
 
             String packageName = ris.get(i).serviceInfo.packageName ;
-            OutputClient outputClient = new OutputClient(context, packageName, action) ;
-            outputClients.put(packageName, outputClient) ;
+            Receiver receiver = new Receiver(context, packageName, action) ;
+            outputClients.put(packageName, receiver) ;
 
         }
         return outputClients ;

@@ -2,7 +2,7 @@ package com.yongyida.robot.brain.manager;
 
 import com.yongyida.robot.nerve.cell.Container;
 import com.yongyida.robot.nerve.cell.foot.FootSendBrain;
-import com.yongyida.robot.nerve.cell.foot.FootSendBrainProcessor;
+import com.yongyida.robot.nerve.cell.foot.brain.FootSendBrainProcessor;
 import com.yongyida.robot.nerve.service.BrainService;
 
 /**

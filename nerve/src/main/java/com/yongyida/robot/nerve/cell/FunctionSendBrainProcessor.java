@@ -3,13 +3,14 @@ package com.yongyida.robot.nerve.cell;
 import com.yongyida.robot.nerve.service.BrainService;
 
 /**
- * Created by Huangxiangxiang on 2017/6/26.
- * 功能发送给大脑的处理基类
+ * Created by Huangxiangxiang on 2017/6/29.
+ * 《大脑》 接收 《设备》信息
  */
-public abstract class FunctionSendBrainProcessor extends SendProcessor {
+public abstract class FunctionSendBrainProcessor extends ReceiveProcessor {
 
-    public FunctionSendBrainProcessor(BrainService receiveService){
+    public FunctionSendBrainProcessor(BrainService brainService){
 
-        super(receiveService);
+        super(brainService) ;
     }
+
 }

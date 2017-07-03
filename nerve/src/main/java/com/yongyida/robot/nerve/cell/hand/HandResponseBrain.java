@@ -1,5 +1,7 @@
 package com.yongyida.robot.nerve.cell.hand;
 
+import android.content.Context;
+
 import com.yongyida.robot.nerve.cell.FunctionResponseBrain;
 
 /**
@@ -7,4 +9,7 @@ import com.yongyida.robot.nerve.cell.FunctionResponseBrain;
  */
 public class HandResponseBrain extends FunctionResponseBrain {
 
+    public HandResponseBrain(Context context) {
+        super(context);
+    }
 }

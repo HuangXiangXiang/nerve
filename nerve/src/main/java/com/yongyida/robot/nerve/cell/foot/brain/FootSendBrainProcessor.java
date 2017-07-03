@@ -1,13 +1,15 @@
-package com.yongyida.robot.nerve.cell.foot;
+package com.yongyida.robot.nerve.cell.foot.brain;
 
 import com.yongyida.robot.nerve.cell.Container;
+import com.yongyida.robot.nerve.cell.BrainSendFunctionProcessor;
 import com.yongyida.robot.nerve.cell.FunctionSendBrainProcessor;
+import com.yongyida.robot.nerve.cell.foot.FootSendBrain;
 import com.yongyida.robot.nerve.service.BrainService;
 
 /**
  * Created by Huangxiangxiang on 2017/6/29.
  */
-public abstract class FootSendBrainProcessor extends FunctionSendBrainProcessor {
+public abstract class FootSendBrainProcessor extends FunctionSendBrainProcessor{
 
     public FootSendBrainProcessor(BrainService receiveService) {
         super(receiveService);

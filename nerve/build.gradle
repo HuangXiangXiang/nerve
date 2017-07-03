@@ -10,8 +10,6 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
     buildTypes {
         release {
@@ -37,7 +35,7 @@ publish{
     userOrg = 'huangxiangxiang'//bintray.com的用户名
     groupId = 'com.yongyida.robot.nerve'//jcenter上的路径
     artifactId = 'nerve'//项目名称
-    publishVersion = '0.0.2'//版本号
+    publishVersion = '0.1.0'//版本号
     desc = '机器人各个枢纽通讯'//描述，不重要
     website = siteUrl//项目主页
 }

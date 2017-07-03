@@ -10,5 +10,5 @@ import com.yongyida.robot.nerve.cell.Container;
  */
 public interface SendResponseListener {
 
-    void responseSend(OutputClient outputClient, Container container);
+    void responseSend(Receiver receiver, Container container);
 }

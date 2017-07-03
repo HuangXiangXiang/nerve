@@ -1,16 +1,17 @@
-package com.yongyida.robot.nerve.cell.hand;
+package com.yongyida.robot.nerve.cell.hand.brain;
 
 import com.yongyida.robot.nerve.cell.Container;
 import com.yongyida.robot.nerve.cell.FunctionSendBrainProcessor;
+import com.yongyida.robot.nerve.cell.hand.HandSendBrain;
 import com.yongyida.robot.nerve.service.BrainService;
 
 /**
- * Created by Huangxiangxiang on 2017/6/29.
+ * Created by Huangxiangxiang on 2017/7/1.
  */
 public abstract class HandSendBrainProcessor extends FunctionSendBrainProcessor {
 
-    public HandSendBrainProcessor(BrainService receiveService) {
-        super(receiveService);
+    public HandSendBrainProcessor(BrainService brainService) {
+        super(brainService);
     }
 
     @Override
@@ -26,5 +27,4 @@ public abstract class HandSendBrainProcessor extends FunctionSendBrainProcessor 
     }
 
     protected abstract void handleEvent(Container container, HandSendBrain send) ;
-
 }

@@ -7,8 +7,9 @@ import android.view.View;
 
 import com.yongyida.robot.nerve.cell.Container;
 import com.yongyida.robot.nerve.cell.ear.BrainSendEar;
-import com.yongyida.robot.nerve.send.OutputClient;
-import com.yongyida.robot.nerve.send.SendCenter;
+import com.yongyida.robot.nerve.cell.ear.EarResponseBrain;
+import com.yongyida.robot.nerve.send.Receiver;
+import com.yongyida.robot.nerve.send.SendManager;
 import com.yongyida.robot.nerve.send.SendResponseListener;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,26 +18,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
 
 
     public void send(View view){
 
-        BrainSendEar brainSendEar = new BrainSendEar() ;
-        Container container = Container.getBrainSendFunctionContainer(this, brainSendEar) ;
+        BrainSendEar brainSendEar = new BrainSendEar(this) ;
 
         SendResponseListener sendResponseListener = new SendResponseListener() {
             @Override
-            public void responseSend(OutputClient outputClient, Container container) {
+            public void responseSend(Receiver outputClient, Container container) {
+
+                EarResponseBrain earResponseBrain = container.getData(EarResponseBrain.class) ;
 
                 Log.i(TAG, "responseSend " + container) ;
             }
         };
 
-        SendCenter.getInstance(this).sendToBrain(container, sendResponseListener);
+        SendManager.getInstance(this).brainSendFunction(brainSendEar, sendResponseListener);
 
     }
 

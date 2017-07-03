@@ -1,5 +1,7 @@
 package com.yongyida.robot.nerve.cell.foot;
 
+import android.content.Context;
+
 import com.yongyida.robot.nerve.cell.FunctionResponseBrain;
 
 /**
@@ -8,4 +10,7 @@ import com.yongyida.robot.nerve.cell.FunctionResponseBrain;
 public class FootResponseBrain extends FunctionResponseBrain {
 
 
+    public FootResponseBrain(Context context) {
+        super(context);
+    }
 }

@@ -1,12 +1,12 @@
-package com.yongyida.robot.nerve.cell.mouth;
+package com.yongyida.robot.nerve.cell.mouth.brain;
 
 import com.yongyida.robot.nerve.cell.Container;
 import com.yongyida.robot.nerve.cell.FunctionSendBrainProcessor;
+import com.yongyida.robot.nerve.cell.mouth.MouthSendBrain;
 import com.yongyida.robot.nerve.service.BrainService;
 
 /**
- * Created by Huangxiangxiang on 2017/6/24.
- * 嘴巴
+ * Created by Huangxiangxiang on 2017/7/1.
  */
 public abstract class MouthSendBrainProcessor extends FunctionSendBrainProcessor {
 

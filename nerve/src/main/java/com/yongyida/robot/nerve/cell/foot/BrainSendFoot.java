@@ -1,13 +1,15 @@
 package com.yongyida.robot.nerve.cell.foot;
 
-import com.yongyida.robot.nerve.cell.FunctionSendBrain;
+import android.content.Context;
+
+import com.yongyida.robot.nerve.cell.BrainSendFunction;
 
 /**
- * Created by Huangxiangxiang on 2017/6/23.
- * 大脑发送给足
+ * Created by Huangxiangxiang on 2017/7/3.
  */
-public class BrainSendFoot extends FunctionSendBrain {
+public class BrainSendFoot extends BrainSendFunction {
 
-
-
+    public BrainSendFoot(Context context) {
+        super(context);
+    }
 }

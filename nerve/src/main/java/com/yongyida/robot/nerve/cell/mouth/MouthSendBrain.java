@@ -1,5 +1,7 @@
 package com.yongyida.robot.nerve.cell.mouth;
 
+import android.content.Context;
+
 import com.yongyida.robot.nerve.cell.FunctionSendBrain;
 
 /**
@@ -7,4 +9,7 @@ import com.yongyida.robot.nerve.cell.FunctionSendBrain;
  */
 public class MouthSendBrain extends FunctionSendBrain {
 
+    public MouthSendBrain(Context context) {
+        super(context);
+    }
 }

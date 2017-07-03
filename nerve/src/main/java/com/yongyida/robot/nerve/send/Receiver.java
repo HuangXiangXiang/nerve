@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.text.TextUtils;
 
 import com.yongyida.robot.nerve.NerveSendManager;
 import com.yongyida.robot.nerve.ResponseListener;
@@ -17,12 +16,13 @@ import java.util.TimerTask;
 
 /**
  * Created by Administrator on 2017/5/31.
+ * 发送的对象(即 接收者)
  */
-
-public class OutputClient {
+public class Receiver {
 
     /**
-     * 存活时间，发送任务结束后1分钟断开连接
+     * 存活时间，发送任务结束后断开连接的时间，在这段时间内发送不需要连接
+     * 并且每次发送重新刷新这个这个时间
      * */
     private final static long ALIVE_TIME = 60*1000; //
 
@@ -37,12 +37,17 @@ public class OutputClient {
     private JudeResponseListener mJudeResponseListener ;
     private SendResponseListener mResponse ;
 
-    public OutputClient(Context context, String packageName, String action){
+    // 未绑定，绑定中，绑定成功，
+    // 发送指令 ，响应失败/响应成功。
+    private int statue ;
+    //任务编号
+    private String taskId ;
+
+    public Receiver(Context context, String packageName, String action){
 
         this.context = context ;
         this.packageName = packageName ;
         this.action = action ;
-
 
     }
 
@@ -58,7 +63,7 @@ public class OutputClient {
 
     private boolean isRegistering = false; // 是否注册中
 
-    public void registerService(){
+    private void registerService(){
 
         if(isRegistering){
 
@@ -77,7 +82,7 @@ public class OutputClient {
         }
     }
 
-    public void unRegisterService(){
+    private void unRegisterService(){
 
         if(mNerveSendManager != null){
 
@@ -90,16 +95,26 @@ public class OutputClient {
     }
 
 
+    /**外部关闭*/
+    public void close(){
 
+        stopTimer();
+
+        unRegisterService() ;
+    }
+
+
+    /**回调*/
     private ResponseListener.Stub mResponseListener = new ResponseListener.Stub() {
 
         @Override
         public void response(String content) throws RemoteException {
 
+            //发送结果的回调
 
             if(mResponse != null){
 
-                mResponse.responseSend(OutputClient.this, Container.fromJson(content));
+                mResponse.responseSend(Receiver.this, Container.fromJson(content));
             }
 
         }
@@ -121,8 +136,7 @@ public class OutputClient {
                 e.printStackTrace();
             }
 
-            send(mContent) ;
-            mContent = null ;
+            send(mContainer) ;
 
         }
 
@@ -170,22 +184,22 @@ public class OutputClient {
         }
     }
 
-    private String mContent ;
 
-    public void send(String content){
+    public Container getContainer() {
 
-//        Logger.json(data);
+        return mContainer;
+    }
 
-        if(TextUtils.isEmpty(content)){
+    // 发送的内容
+    private Container mContainer ;
 
-            return ;
-        }
+    public void send(Container container){
 
         startTimer() ;
 
         if(mNerveSendManager == null) {
 
-            mContent = content ;
+            mContainer = container ;
 
             registerService() ;
             return ;
@@ -193,7 +207,7 @@ public class OutputClient {
 
         try {
 
-            mNerveSendManager.send(content);
+            mNerveSendManager.send(container.toJson());
 
         } catch (RemoteException e) {
             e.printStackTrace();

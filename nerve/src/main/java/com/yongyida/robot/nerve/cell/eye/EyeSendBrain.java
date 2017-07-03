@@ -1,5 +1,7 @@
 package com.yongyida.robot.nerve.cell.eye;
 
+import android.content.Context;
+
 import com.yongyida.robot.nerve.cell.FunctionSendBrain;
 
 /**
@@ -8,4 +10,7 @@ import com.yongyida.robot.nerve.cell.FunctionSendBrain;
 public class EyeSendBrain extends FunctionSendBrain {
 
 
+    public EyeSendBrain(Context context) {
+        super(context);
+    }
 }

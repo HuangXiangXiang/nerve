@@ -1,11 +1,12 @@
-package com.yongyida.robot.nerve.cell.smarthome;
+package com.yongyida.robot.nerve.cell.smarthome.function;
 
 import com.yongyida.robot.nerve.cell.BrainSendFunctionProcessor;
 import com.yongyida.robot.nerve.cell.Container;
+import com.yongyida.robot.nerve.cell.smarthome.BrainSendSmartHome;
 import com.yongyida.robot.nerve.service.FunctionService;
 
 /**
- * Created by Huangxiangxiang on 2017/6/29.
+ * Created by Huangxiangxiang on 2017/7/1.
  */
 public abstract class BrainSendSmartHomeProcessor extends BrainSendFunctionProcessor {
 

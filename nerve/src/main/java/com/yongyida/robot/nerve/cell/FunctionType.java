@@ -1,6 +1,14 @@
 package com.yongyida.robot.nerve.cell;
 
-import android.util.SparseArray;
+import com.yongyida.robot.nerve.cell.ear.BrainSendEar;
+import com.yongyida.robot.nerve.cell.expression.BrainSendExpression;
+import com.yongyida.robot.nerve.cell.eye.BrainSendEye;
+import com.yongyida.robot.nerve.cell.foot.BrainSendFoot;
+import com.yongyida.robot.nerve.cell.hand.BrainSendHand;
+import com.yongyida.robot.nerve.cell.mouth.BrainSendMouth;
+import com.yongyida.robot.nerve.cell.smarthome.BrainSendSmartHome;
+
+import java.util.HashMap;
 
 /**
  * Created by Huangxiangxiang on 2017/6/23.
@@ -8,36 +16,13 @@ import android.util.SparseArray;
  */
 public class FunctionType {
 
-    /**大脑*/
-    public static final int TYPE_BRAIN                          = 0x01 ;
-    /**嘴巴*/
-    public static final int TYPE_MOUTH                          = 0x02 ;
-    /**眼睛*/
-    public static final int TYPE_EYE                            = 0x03 ;
-    /**耳朵*/
-    public static final int TYPE_EAR                            = 0x04 ;
-
-
-    /**足*/
-    public static final int TYPE_FOOT                           = 0x10 ;
-    /**手*/
-    public static final int TYPE_HAND                           = 0x11 ;
-
-
-    /**表情*/
-    public static final int TYPE_EXPRESSION                     = 0x20 ;
-
-
-    /**智能家庭*/
-    public static final int TYPE_SMART_HOME                     = 0x100 ;
-
-
-
-
 
     // 以下 用于 配置在Service的Action中
     /**大脑的Action*/
     public static final String ACTION_BRAIN                     = "com.yydrobot.brain" ;
+
+    public static final String PACKAGE_BRAIN                    = "" ;
+
     /**嘴巴的Action*/
     public static final String ACTION_MOUTH                     = "com.yydrobot.mouth" ;
     /**眼睛的Action*/
@@ -55,27 +40,23 @@ public class FunctionType {
     public static final String ACTION_SMART_HOME                = "com.yydrobot.smart_home" ;
 
 
-
-
-
-    private static final SparseArray<String > actions = new SparseArray<>() ;
+    private static final HashMap<Class<? extends BrainSendFunction>, String> actions = new HashMap<>() ;
     static {
 
-        actions.put(TYPE_BRAIN ,        ACTION_BRAIN);
-        actions.put(TYPE_MOUTH ,        ACTION_MOUTH);
-        actions.put(TYPE_EYE ,          ACTION_EYE);
-        actions.put(TYPE_EAR ,          ACTION_EAR);
-        actions.put(TYPE_HAND ,         ACTION_HAND);
-        actions.put(TYPE_FOOT ,         ACTION_FOOT);
-        actions.put(TYPE_EXPRESSION ,   ACTION_EXPRESSION);
-        actions.put(TYPE_SMART_HOME,    ACTION_SMART_HOME);
+        actions.put(BrainSendMouth.class,           ACTION_MOUTH);
+        actions.put(BrainSendEye.class,             ACTION_EYE);
+        actions.put(BrainSendEar.class,             ACTION_EAR);
+        actions.put(BrainSendHand.class,            ACTION_HAND);
+        actions.put(BrainSendFoot.class,            ACTION_FOOT);
+        actions.put(BrainSendExpression.class,      ACTION_EXPRESSION);
+        actions.put(BrainSendSmartHome.class,       ACTION_SMART_HOME);
     }
 
 
     /**获取对应消息的Aciton*/
-    public static String getAction(int type){
+    public static String getAction(Class<? extends BrainSendFunction> clazz){
 
-        return actions.get(type) ;
+        return actions.get(clazz) ;
     }
 
 }
